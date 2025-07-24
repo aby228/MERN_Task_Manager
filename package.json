@@ -1,0 +1,29 @@
+{
+
+    "name": "my-mern-app",
+  
+    "version": "1.0.0",
+  
+    "description": "",
+  
+    "main": "index.js",
+  
+    "scripts": {
+  
+      "prepare": "husky install"
+  
+    },
+  
+    "keywords": [],
+  
+    "author": "",
+  
+    "license": "ISC",
+  
+    "devDependencies": {
+  
+      "husky": "^7.0.0"
+  
+    }
+  
+  }
