@@ -9,6 +9,10 @@ This is a full‑stack MERN application showcasing secure authentication, protec
 - **Observability**: Sentry on the client, Winston logging on the server.
 - **DX / UX**: Toast feedback, route guards, and a minimal but friendly UI.
 
+-**Live Demo**
+[Client](https://mern-task-manager-1-pil2.onrender.com)
+[Server](https://mern-task-manager-1phx.onrender.com)
+
 ### Stack
 - Client: React 18, `react-router-dom@7`, Context API, React Toastify, Sentry
 - Server: Node.js, Express, Mongoose, Joi, Helmet, CORS, Rate‑Limit, Winston
