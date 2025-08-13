@@ -1,4 +1,4 @@
-## MERN Task Manager — Production-Ready, Authenticated CRUD
+## MERN Task Manager (Production-Ready, Authenticated CRUD)
 
 This is a full‑stack MERN application showcasing secure authentication, protected routes, and real‑world CRUD. It’s deliberately engineered with reliability and clarity in mind: httpOnly cookies for JWTs, input validation, rate limiting, structured logging, and a clean React client with route guards and context‑driven state.
 
@@ -64,7 +64,3 @@ REACT_APP_SENTRY_DSN=
 - E2E tests (Playwright) covering auth flows and task CRUD.
 - Role‑based access control and refresh token rotation.
 - Optimistic UI updates and offline cache for tasks.
-
-
-### License
-MIT
