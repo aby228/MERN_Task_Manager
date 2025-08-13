@@ -1,70 +1,79 @@
-## MERN Task Manager (Production-Ready, Authenticated CRUD)
+## MERN Task Manager (Secure, Authenticated CRUD)
 
-This is a full‑stack MERN application showcasing secure authentication, protected routes, and real‑world CRUD. It’s deliberately engineered with reliability and clarity in mind: httpOnly cookies for JWTs, input validation, rate limiting, structured logging, and a clean React client with route guards and context‑driven state.
+This full‑stack project demonstrates production‑minded application design on the MERN stack: secure auth with httpOnly cookies, protected routes, input validation, rate limiting, and clean component architecture.
 
-### Highlights recruiters care about
-- **Authentication done right**: Short‑lived JWT in an httpOnly cookie, validated on every request. No tokens in localStorage.
-- **Secure by default**: Helmet, CORS with credentials, rate limiting, and server‑side validation using Joi.
-- **Clean architecture**: Layered controllers, models, middleware, and validators; small focused React components with context for auth.
-- **Observability**: Sentry on the client, Winston logging on the server.
-- **DX / UX**: Toast feedback, route guards, and a minimal but friendly UI.
+### Live Demo
+- Client: [mern-task-manager-1-pil2.onrender.com](https://mern-task-manager-1-pil2.onrender.com)
+- API: [mern-task-manager-1phx.onrender.com](https://mern-task-manager-1phx.onrender.com)
 
--**Live Demo**
--[Client](https://mern-task-manager-1-pil2.onrender.com)
--[Server](https://mern-task-manager-1phx.onrender.com)
+### Why this project stands out
+- **Authentication done right**: Short‑lived JWT in an httpOnly cookie, verified on every request (no localStorage tokens).
+- **Security posture**: Helmet, CORS with credentials, rate limiting, and Joi validation on inputs.
+- **Clean architecture**: Controllers, models, middleware, validators on the backend; Context + route guards on the frontend.
+- **Observability**: Sentry (client) and structured logging via Winston (server).
+- **User experience**: Toast notifications, simple responsive UI.
 
-### Stack
+### Tech Stack
 - Client: React 18, `react-router-dom@7`, Context API, React Toastify, Sentry
 - Server: Node.js, Express, Mongoose, Joi, Helmet, CORS, Rate‑Limit, Winston
 - Database: MongoDB
 
-### Quickstart
-1) Server
+### Local Development
+1) API
 ```bash
 cd server
-cp .env.example .env  # create and fill secrets
-pnpm i || npm i || yarn
-npm run dev  # or: npm start
+cp .env.example .env   # add your secrets (see Environment)
+npm install
+npm run dev            # or: npm start
 ```
 
-2) Client (in another terminal)
+2) Client (separate terminal)
 ```bash
 cd client
-pnpm i || npm i || yarn
+npm install
 npm start
 ```
 
-By default the client proxies API calls to `http://localhost:5000`.
+The client proxies API calls to `http://localhost:5000` in development.
 
 ### Environment
-Server `.env` keys:
+- Server `.env`
 ```
 NODE_ENV=development
 PORT=5000
 MONGO_URI=mongodb://127.0.0.1:27017/mern_task_manager
-JWT_SECRET=super_secret_change_me
+JWT_SECRET=<your_generated_secret>
 CLIENT_ORIGIN=http://localhost:3000
 ```
-
-Client `.env` keys (optional):
+- Client `.env` (optional)
 ```
 REACT_APP_SENTRY_DSN=
 ```
 
-### Architecture notes
-- `server/app.js`: Express setup, security middleware, Mongo connection, routes, and centralized error handling.
-- `server/controllers/*`: Request handlers (auth and tasks) with ownership checks and input validation.
-- `server/middleware/*`: JWT protect middleware reads the token from an httpOnly cookie; error middleware serializes errors.
-- `server/models/*`: Mongoose models with password hashing (User) and per‑user task ownership (Task).
-- `client/src/context/AuthContext.js`: Loads profile on boot, exposes `login`, `register`, `logout` with axios configured to send cookies.
-- `client/src/components/PrivateRoute.js`: Route guard that waits for auth state and redirects if unauthenticated.
-- `client/src/App.js`: Route table and app shell (navbar + toast container).
+### Architecture
+- `server/app.js`: Express setup, security middleware, Mongo connection, routes, and centralized error handling
+- `server/controllers/*`: Request handlers (auth and tasks) with ownership checks and input validation
+- `server/middleware/*`: JWT `protect` middleware (reads httpOnly cookie), error serialization
+- `server/models/*`: Mongoose models (User with password hashing, Task with ownership)
+- `client/src/context/AuthContext.js`: Loads profile on boot; `login`, `register`, `logout` with axios sending credentials
+- `client/src/components/PrivateRoute.js`: Route guard; waits for auth to resolve and redirects if unauthenticated
+- `client/src/App.js`: Route table and app shell (navbar + toast container)
 
-### Security choices
-- JWT stored in `httpOnly` cookie to mitigate XSS token theft; CSRF minimized via same‑site cookies and route design.
-- Input validation with Joi; rate limiting to reduce brute‑force; password hashing with bcrypt.
+### Deploying on Render
+- API (Web Service)
+  - Root Directory: `server`
+  - Build: `npm ci` (or `npm install` if lockfile changes are pending)
+  - Start: `npm start`
+  - Environment: `MONGO_URI`, `JWT_SECRET`, `CLIENT_ORIGIN=https://<your-static-site>.onrender.com`, `NODE_ENV=production`
+- Client (Static Site)
+  - Root Directory: `client`
+  - Build: `npm ci && npm run build`
+  - Publish: `build`
+  - Redirects/Rewrites (ensure order):
+    - Source: `/api/*` → Destination: `https://<your-api>.onrender.com/api/:splat` → Action: Rewrite
+    - Source: `/*` → Destination: `/index.html` → Action: Rewrite
 
-### What I’d build next
-- E2E tests (Playwright) covering auth flows and task CRUD.
-- Role‑based access control and refresh token rotation.
-- Optimistic UI updates and offline cache for tasks.
+### What’s next
+- E2E tests (Playwright) for auth and CRUD flows
+- Role‑based access control and refresh token rotation
+- Optimistic UI updates and offline cache
