@@ -3,8 +3,8 @@
 This full‑stack project demonstrates production‑minded application design on the MERN stack: secure auth with httpOnly cookies, protected routes, input validation, rate limiting, and clean component architecture.
 
 ### Live Demo
-- Client: [mern-task-manager-1-pil2.onrender.com](https://mern-task-manager-1-pil2.onrender.com)
-- API: [mern-task-manager-1phx.onrender.com](https://mern-task-manager-1phx.onrender.com)
+- [Client](https://mern-task-manager-1-pil2.onrender.com)
+- [API](https://mern-task-manager-1phx.onrender.com)
 
 ### Why this project stands out
 - **Authentication done right**: Short‑lived JWT in an httpOnly cookie, verified on every request (no localStorage tokens).
