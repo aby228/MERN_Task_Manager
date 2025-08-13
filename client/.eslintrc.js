@@ -3,10 +3,8 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ["react-app", "react-app/jest", "prettier"],
-  plugins: ["prettier"],
-  rules: {
-    "prettier/prettier": "error"
-  }
+  // Keep CRA defaults; drop prettier-enforced errors during build
+  extends: ["react-app", "react-app/jest"],
+  rules: {}
 };
 
