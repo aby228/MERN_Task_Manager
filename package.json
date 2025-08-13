@@ -1,29 +1,102 @@
 {
 
     "name": "my-mern-app",
-  
+
     "version": "1.0.0",
-  
+
     "description": "",
-  
+
     "main": "index.js",
-  
+
     "scripts": {
-  
-      "prepare": "husky install"
-  
+
+        "prepare": "husky install",
+
+        "cypress:open": "cypress open",
+
+        "cypress:run": "cypress run",
+
+        "lint": "eslint .",
+
+        "format": "prettier --check .",
+
+        "format:fix": "prettier --write .",
+
+        "dev": "concurrently \"npm --prefix server run dev\" \"npm --prefix client start\""
+
     },
-  
+
     "keywords": [],
-  
+
     "author": "",
-  
+
     "license": "ISC",
-  
+
     "devDependencies": {
-  
-      "husky": "^7.0.0"
-  
+
+        "@testing-library/jest-dom": "^6.6.3",
+
+        "@testing-library/react": "^16.3.0",
+
+        "cypress": "^14.5.2",
+
+        "husky": "^7.0.0",
+
+        "jest": "^30.0.5",
+
+        "supertest": "^7.1.4",
+
+        "concurrently": "^9.0.1",
+
+        "eslint": "^8.57.0",
+
+        "prettier": "^3.3.3",
+
+        "eslint-config-airbnb-base": "^15.0.0",
+
+        "eslint-plugin-prettier": "^5.2.1",
+
+        "eslint-config-prettier": "^9.1.0",
+
+        "eslint-plugin-import": "^2.29.1"
+
+    },
+
+    "dependencies": {
+
+        "@sentry/react": "^9.40.0",
+
+        "@sentry/tracing": "^7.120.3",
+
+        "axios": "^1.11.0",
+
+        "bcryptjs": "^3.0.2",
+
+        "cookie-parser": "^1.4.7",
+
+        "cors": "^2.8.5",
+
+        "dotenv": "^17.2.0",
+
+        "express": "^5.1.0",
+
+        "express-rate-limit": "^8.0.1",
+
+        "joi": "^17.13.3",
+
+        "jsonwebtoken": "^9.0.2",
+
+        "mongoose": "^8.16.4",
+
+        "morgan": "^1.10.1",
+
+        "react-router-dom": "^7.7.0",
+
+        "react-toastify": "^11.0.5",
+
+        "winston": "^3.17.0"
+
     }
-  
-  }
+
+}
+
